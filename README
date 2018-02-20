@@ -1,1 +1,7 @@
 This repo is a repro for an error with React Native / Realm / Haul / Webpack
+
+1. Create new React-Native project
+2. Install Haul
+3. Install RealmJS
+4. Add some Realm code
+5. You will see a warning ```Critical dependency: the request of a dependency is an expression```
