@@ -11,6 +11,7 @@ import {
   Text,
   View
 } from 'react-native';
+import * as Realm from 'realm'
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -18,6 +19,26 @@ const instructions = Platform.select({
   android: 'Double tap R on your keyboard to reload,\n' +
     'Shake or press menu button for dev menu',
 });
+
+const CarSchema = {
+  name: 'Car',
+  properties: {
+    make:  'string',
+    model: 'string',
+    miles: {type: 'int', default: 0},
+  }
+};
+const PersonSchema = {
+  name: 'Person',
+  properties: {
+    name:     'string',
+    birthday: 'date',
+    cars:     'Car[]',
+    picture:  'data?' // optional property
+  }
+};
+
+const realm = Realm.open({schema: [CarSchema, PersonSchema]})
 
 type Props = {};
 export default class App extends Component<Props> {
